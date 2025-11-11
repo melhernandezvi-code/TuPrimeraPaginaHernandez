@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="welcome-box">
+  <h1>Bienvenida/o al portal inicial</h1>
+  <p>Desde aquí podrás crear profesores, cursos, estudiantes y agregar tus entregables.</p>
+
+  <form action="" method="get" style="margin-top: 20px;">
+    <label for="camada">Buscar una camada:</label><br>
+    <input type="number" id="camada" name="camada" placeholder="Escribe el número..." required>
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if mensaje %}
+    <p style="color: #ff9d9d; margin-top: 15px;">{{ mensaje }}</p>
+  {% endif %}
+
+  {% if resultados %}
+    <div style="margin-top: 20px;">
+      <h3>Resultados:</h3>
+      <ul style="list-style: none; padding: 0;">
+        {% for curso in resultados %}
+          <li style="color: #fff;">Curso: <strong>{{ curso.nombre }}</strong> — Camada: {{ curso.camada }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

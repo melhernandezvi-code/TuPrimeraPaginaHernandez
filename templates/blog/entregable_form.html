@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Entregable{% endblock %}
+
+{% block content %}
+<div class="form-box">
+  <h2>Agregar Entregable</h2>
+
+  <form method="POST" onsubmit="return validarFormulario();">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="nombre">Nombre <span class="requerido">*</span></label>
+      <input type="text" id="nombre" name="nombre" 
+             pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+             title="Solo letras"
+             required>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha_entrega">Fecha de entrega <span class="requerido">*</span></label>
+      <input type="date" id="fecha_entrega" name="fecha_entrega" required>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label for="entregado">Entregado <span class="requerido">*</span></label>
+      <input type="checkbox" id="entregado" name="entregado" required>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  {% if success %}
+    <div id="mensaje-exito">
+      <p>🎉 ¡Entregable agregado correctamente! 🎉</p>
+    </div>
+    <canvas id="confetti"></canvas>
+  {% endif %}
+</div>
+
+<script>
+function validarFormulario() {
+  const campos = document.querySelectorAll("input[required]");
+  for (let campo of campos) {
+    if (campo.type === "checkbox" && !campo.checked) {
+      alert("Debes marcar el campo 'Entregado'.");
+      campo.focus();
+      return false;
+    }
+    if (campo.type !== "checkbox" && !campo.value.trim()) {
+      alert("Por favor completa todos los campos obligatorios.");
+      campo.focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+if (document.getElementById('confetti')) {
+  lanzarConfeti();
+}
+
+function lanzarConfeti() {
+  const duration = 3000;
+  const end = Date.now() + duration;
+  const colors = ['#ff66cc', '#ffffff', '#ffccff'];
+
+  (function frame() {
+    const timeLeft = end - Date.now();
+    if (timeLeft <= 0) return;
+
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 2000);
+    requestAnimationFrame(frame);
+  })();
+}
+</script>
+{% endblock %}

@@ -4,20 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Tu Primera Página - Blog{% endblock %}</title>
+  <title>{% block title %}Tu Primera Página{% endblock %}</title>
 
   <style>
     body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: url("{% static 'img/fondo.png' %}") no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll;
-    color: white;
-    text-align: center;
-    overflow-y: auto;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("{% static 'img/fondo1.png' %}") no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      overflow-y: auto;
     }
 
+    /* NAVBAR */
     nav {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 15px;
@@ -26,7 +26,7 @@
       gap: 25px;
       position: sticky;
       top: 0;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
     }
 
     nav a {
@@ -40,105 +40,65 @@
       color: #ffccff;
     }
 
+    /* CONTENIDO PRINCIPAL */
     main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 82vh;
-    margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 82vh;
+      margin: 0 auto;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
+    /* FOOTER */
     footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 6px 0;
-    font-size: 0.8rem;
-    color: #ddd;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 6px 0;
+      font-size: 0.8rem;
+      color: #ddd;
     }
 
     .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
 
     .social-icons {
-    display: flex;
-    gap: 14px;
-    margin-top: 4px;
+      display: flex;
+      gap: 14px;
     }
 
     .social-icons img {
-    width: 22px;
-    height: 22px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s, filter 0.3s;
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s, filter 0.3s;
     }
 
     .social-icons img:hover {
-    transform: scale(1.2);
-    filter: brightness(1) invert(0.2) sepia(1) saturate(8) hue-rotate(290deg);
+      transform: scale(1.2);
+      filter: brightness(1) invert(0.2) sepia(1) saturate(8) hue-rotate(290deg);
     }
 
-    button, input[type="text"], input[type="number"], input[type="date"] {
-      border-radius: 8px;
-      border: none;
-      padding: 10px;
-      font-size: 1rem;
-    }
-
-    button {
-      background-color: #ff66cc;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #ff99dd;
-    }
-
+    /* CAJA DE CONTENIDO (HOME / ABOUT) */
     .welcome-box {
       background-color: rgba(0, 0, 0, 0.45);
       border-radius: 20px;
       padding: 40px;
       color: white;
       text-align: center;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
       backdrop-filter: blur(5px);
-    }
-
-    .welcome-box input,
-    .welcome-box button {
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: none;
-      margin-top: 10px;
-    }
-
-    .welcome-box button {
-      background-color: #ff66cc;
-      color: white;
-      cursor: pointer;
-    }
-
-    .welcome-box button:hover {
-      background-color: #ff99dd;
     }
 
     .messages {
@@ -151,113 +111,27 @@
       font-weight: bold;
     }
 
-    .form-box {
-    background-color: rgba(0, 0, 0, 0.45);
-    border-radius: 20px;
-    padding: 40px;
-    color: white;
-    text-align: left;
-    width: 400px;
-    margin: 80px auto;
-    backdrop-filter: blur(5px);
+    button {
+      border-radius: 8px;
+      border: none;
+      padding: 10px 20px;
+      background-color: #ff66cc;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .form-box h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #fff;
+    button:hover {
+      background-color: #ff99dd;
     }
-
-    .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    }
-
-    .form-group label {
-    font-weight: 600;
-    margin-bottom: 5px;
-    }
-
-    .requerido {
-    color: #ff66cc;
-    font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    }
-
-    button[type="submit"] {
-    background-color: #ff66cc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: 0.3s;
-    }
-
-    button[type="submit"]:hover {
-    background-color: #ff99dd;
-    }
-
-    .confetti {
-    position: fixed;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    opacity: 0.9;
-    border-radius: 50%;
-    animation: caer linear forwards;
-    z-index: 999;
-    }
-
-    @keyframes caer {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-    }
-    }
-
-    #mensaje-exito {
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffccff;
-    border-radius: 12px;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-weight: 600;
-    animation: fadeIn 0.8s ease;
-    }
-
-    @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-    }
-
-    #camada {
-    margin-bottom: 12px;
-    }
-    
   </style>
 </head>
+
 <body>
   <nav>
     <a href="{% url 'home' %}">Inicio</a>
-    <a href="{% url 'profesor_form' %}">Profesores</a>
-    <a href="{% url 'curso_form' %}">Cursos</a>
-    <a href="{% url 'estudiante_form' %}">Estudiantes</a>
-    <a href="{% url 'entregable_form' %}">Entregables</a>
+    <a href="{% url 'about' %}">Acerca de mí</a>
+    <a href="{% url 'blog' %}">Blog</a>
   </nav>
 
   <main>
@@ -279,8 +153,8 @@
         <a href="https://www.instagram.com/" target="_blank" title="Instagram">
           <img src="{% static 'img/instagram.svg' %}" alt="Instagram">
         </a>
-        <a href="https://x.com/" target="_blank" title="X (Twitter)">
-          <img src="{% static 'img/x.svg' %}" alt="Twitter">
+        <a href="https://x.com/" target="_blank" title="X">
+          <img src="{% static 'img/x.svg' %}" alt="X">
         </a>
         <a href="https://www.youtube.com/" target="_blank" title="YouTube">
           <img src="{% static 'img/youtube.svg' %}" alt="YouTube">

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<h3>{{ object.subtitle }}</h3>
+<p><strong>Autor:</strong> {{ object.author.username }} | {{ object.created_at|date:"d M Y" }}</p>
+
+{% if object.image %}
+    <img src="{{ object.image.url }}" width="400">
+{% endif %}
+
+<hr>
+
+<div>
+    {{ object.content|safe }}
+</div>
+
+<hr>
+
+{% if user == object.author %}
+    <a href="{% url 'post-edit' object.pk %}">✏️ Editar</a> |
+    <a href="{% url 'post-delete' object.pk %}">🗑️ Eliminar</a>
+{% endif %}
+
+<a href="{% url 'post-list' %}">⬅️ Volver a publicaciones</a>
+
+{% endblock %}

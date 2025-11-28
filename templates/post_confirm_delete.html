@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>¿Seguro que deseas eliminar esta publicación?</h2>
+<p><strong>{{ object.title }}</strong></p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+
+<a href="{% url 'post-detail' object.pk %}">Cancelar</a>
+
+{% endblock %}

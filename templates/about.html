@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block title %}Acerca de mí{% endblock %}
+
+{% block content %}
+<div class="welcome-box" style="max-width: 800px; text-align: left;">
+  
+  <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; justify-content: center;">
+    
+    <img src="{% static 'img/Melanie.png' %}" alt="Melanie" 
+        style="width: 220px; height: 220px; object-fit: cover; border-radius: 50%;
+                border: 6px solid #e6b8d6; box-shadow: 0 0 15px rgba(230,184,214,0.5);">
+    
+    <div style="flex: 1; min-width: 260px;">
+      <h1 style="margin-bottom: 5px;">¡Hola! Soy Melanie Hernández👋</h1>
+      <h3 style="margin-top: 0; color: #ffccff;">QA Manual & Automation Tester</h3>
+      <p>
+        Tengo 4 años de experiencia como <b>Quality Assurance Manual</b> y actualmente estoy aprendiendo 
+        <b>automatización, Python y Django</b> con enfoque en desarrollo web y pruebas automatizadas.
+      </p>
+      <p>
+        Me apasiona el análisis funcional, el diseño de pruebas end-to-end, la calidad del software y 
+        seguir aprendiendo nuevas tecnologías. Este sitio es mi proyecto final del curso de
+        <b>Python con Django</b>.
+      </p>
+    </div>
+  </div>
+
+  <hr style="margin: 25px 0; border-color: #ff99dd;">
+
+  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 20px;">
+
+    <div>
+      <h2 style="margin-bottom: 5px;">+4</h2>
+      <p>Años de experiencia QA</p>
+    </div>
+
+    <div>
+      <h2 style="margin-bottom: 5px;">+25</h2>
+      <p>Proyectos probados</p>
+    </div>
+
+    <div>
+      <h2 style="margin-bottom: 5px;">Automation</h2>
+      <p>Playwright, Postman, SQL</p>
+    </div>
+
+    <div>
+      <h2 style="margin-bottom: 5px;">Aprendiendo</h2>
+      <p>Python, Django</p>
+    </div>
+
+  </div>
+
+  <br>
+  <div style="text-align: center;">
+    <a href="{% url 'blog' %}"><button>Ver mi blog</button></a>
+  </div>
+
+</div>
+{% endblock %}

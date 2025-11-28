@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div class="welcome-box">
+    <h1>Publicaciones del Blog</h1>
+
+    {% for post in object_list %}
+        <div style="margin-bottom: 20px;">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.summary }}</p>
+            <a href="{% url 'page_detail' post.pk %}">Leer más</a>
+        </div>
+    {% empty %}
+        <p>No hay publicaciones aún.</p>
+    {% endfor %}
+</div>
+{% endblock %}

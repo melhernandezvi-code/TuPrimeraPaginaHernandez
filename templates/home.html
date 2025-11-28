@@ -3,29 +3,30 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<div class="welcome-box">
-  <h1>Bienvenida/o al portal inicial</h1>
-  <p>Desde aquí podrás crear profesores, cursos, estudiantes y agregar tus entregables.</p>
+<div class="welcome-box" style="max-width: 850px; text-align: center;">
+    
+  <h1 style="margin-bottom: 15px;">Bienvenido a mi Proyecto Final con Django</h1>
+  
+  <p style="margin-bottom: 20px;">
+    Este sitio fue desarrollado como parte de mi entrega final del curso de 
+    <b>Python con Django</b>. Aquí podrás conocer un poco sobre mí, 
+    ver mi blog y explorar cómo se integran las distintas funcionalidades de Django 
+    como plantillas, vistas, modelos y formularios.
+  </p>
 
-  <form action="" method="get" style="margin-top: 20px;">
-    <label for="camada">Buscar una camada:</label><br>
-    <input type="number" id="camada" name="camada" placeholder="Escribe el número..." required>
-    <button type="submit">Buscar</button>
-  </form>
+  <hr style="margin: 25px 0; border-color: #e6b8d6; opacity: 0.7;">
 
-  {% if mensaje %}
-    <p style="color: #ff9d9d; margin-top: 15px;">{{ mensaje }}</p>
-  {% endif %}
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
-  {% if resultados %}
-    <div style="margin-top: 20px;">
-      <h3>Resultados:</h3>
-      <ul style="list-style: none; padding: 0;">
-        {% for curso in resultados %}
-          <li style="color: #fff;">Curso: <strong>{{ curso.nombre }}</strong> — Camada: {{ curso.camada }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+    <a href="{% url 'about' %}">
+      <button style="padding: 10px 20px; border-radius: 8px; border: none;">Acerca de mí</button>
+    </a>
+
+    <a href="{% url 'blog' %}">
+      <button style="padding: 10px 20px; border-radius: 8px; border: none;">Ver Blog</button>
+    </a>
+
+  </div>
+
 </div>
 {% endblock %}
